@@ -6,6 +6,14 @@ import type { TaskType, WsEvent, Platform, TaskProgress } from '@/types'
 
 const api = useApi()
 
+function getLocalDateString() {
+  const now = new Date()
+  const year = now.getFullYear()
+  const month = String(now.getMonth() + 1).padStart(2, '0')
+  const day = String(now.getDate()).padStart(2, '0')
+  return `${year}-${month}-${day}`
+}
+
 // ---- 模式选择 ----
 const modes = [
   { value: 'broad_topic' as TaskType, label: '广义话题', desc: '仅提取热点话题和关键词，不爬取内容', icon: '⊞' },
@@ -18,7 +26,7 @@ const selectedMode = ref<TaskType>('deep_sentiment')
 const platforms = ref<string[]>([])
 const platformList = ref<Platform[]>([])
 const config = reactive({
-  target_date: new Date().toISOString().slice(0, 10),
+  target_date: getLocalDateString(),
   sources: [] as string[],
   max_keywords: 5,
   max_notes: 20,

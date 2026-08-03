@@ -1,8 +1,8 @@
 {
-  "host": "192.168.200.133",
+  "host": "127.0.0.1",
   "port": 3306,
   "user": "root",
-  "password": "hzk686868",
-  "db_name": "media_crawler",
+  "password": "root",
+  "db_name": "media_crawler_v2",
   "charset": "utf8mb4"
 }
