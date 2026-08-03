@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #1e1e24 transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: #1e1e24;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .log-terminal {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-y: auto;
+  }
+  .log-line {
+    padding: 1px 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  .log-info  { color: #a3a3a3; }
+  .log-warn  { color: #f59e0b; }
+  .log-error { color: #ef4444; }
+  .log-stage { color: #00e673; }
+  .log-debug { color: #6b7280; }
+
+  .platform-checkbox:checked + label {
+    border-color: #00e673;
+    box-shadow: 0 0 12px rgba(0, 230, 115, 0.15);
+  }
+
+  .mode-card-active {
+    border-color: #00e673 !important;
+    box-shadow: 0 0 20px rgba(0, 230, 115, 0.1), inset 0 0 20px rgba(0, 230, 115, 0.02);
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .status-dot.green  { background: #00e673; box-shadow: 0 0 6px rgba(0, 230, 115, 0.5); }
+  .status-dot.amber  { background: #f59e0b; box-shadow: 0 0 6px rgba(245, 158, 11, 0.5); }
+  .status-dot.red    { background: #ef4444; box-shadow: 0 0 6px rgba(239, 68, 68, 0.5); }
+  .status-dot.blue   { background: #3b82f6; box-shadow: 0 0 6px rgba(59, 130, 246, 0.5); }
+  .status-dot.gray   { background: #6b7280; }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  .spinner {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes logPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+  .log-cursor {
+    animation: logPulse 1s ease-in-out infinite;
+  }
+}
